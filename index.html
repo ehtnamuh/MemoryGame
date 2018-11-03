@@ -56,9 +56,6 @@
                         });
                         app.clickEventHandler();
                     },
-                    main: function() {
-                        app.shuffle();
-                    },
                     clickEventHandler: function(){
                         $('.card').on('click', function() {
                             if(!$(this).hasClass('matched') ){
@@ -94,12 +91,12 @@
                             }
                             
                         }
-
-                    }     
+                    },
+                    main: function() {
+                        app.shuffle();
+                    },     
                 };
-
                 app.main();   
-
             });
         </script>
     </body>

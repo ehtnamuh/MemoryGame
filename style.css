@@ -11,7 +11,8 @@ body {
     height: 1080px;
     text-align: center;
     margin: 2% auto;
-    background: beige;
+    background: rgba(245, 245, 220, 0.808);
+    border-radius: 20px;
 }
 .containerSub{
     width: inherit;
@@ -29,10 +30,16 @@ body {
     margin: 1%;
     height: 25%;
     width: 20%;
+    background: rgb(78, 0, 0);
+    /* display: inline; */
     border-radius: 10px;
-    background: brown;
+    box-shadow: 10px 10px 10px burlywood;
     padding: 0;
-    font-size: 48px;
+}
+
+.card p{
+    font-size: 400%;
+    color: azure;
 }
 
 .footer{
