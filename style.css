@@ -1,0 +1,36 @@
+*{
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+}
+.container{
+    width: 1080px;
+    height: 1080px;
+    text-align: center;
+    margin: 0 auto;
+    background: beige;
+}
+.containerSub{
+    width: inherit;
+    height: inherit;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 5%;
+/*
+    background: black;
+    opacity: 0.3;
+*/
+}
+.card{
+    float : left;
+    margin: 1%;
+    height: 25%;
+    width: 20%;
+    background: brown;
+}
+
+.footer{
+    clear: both;
+    text-align: left;
+    padding: 2%;
+}
