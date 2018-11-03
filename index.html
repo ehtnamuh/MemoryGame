@@ -29,10 +29,12 @@
             <div class="card"></div>
 
             <div class="footer">
-                <h1>Timer: <span id="timer"></span> <div class="replay">Replay</div></h1>
+                <h1>Timer: <span id="timer"></span>
+                    <div class="replay">Replay</div>
+                </h1>
                 <h1>Current Score: <span id="currentscore">0</span></h1>
             </div>
-            
+
         </div>
 
 
@@ -45,9 +47,9 @@
         // -4 points per wrong answer
         // store highscores in local storage
         var highscore = 0;
-        var timeBonus = 1;
+        var timeBonus = 2;
         var matchPoint = 5;
-        var penalizePoint = 2;
+        var penalizePoint = 1;
 
         if (localStorage.getItem("highscore")) {
             highscore = localStorage.getItem("highscore");
@@ -114,7 +116,11 @@
                             // Win Condition
                             if ($('.matched').length == app.cards.length) {
                                 console.log('You Won!');
-                                $('.containerSub').html('<h1> You WON!!! <\h1>');
+                                $('.card').css("display", "none");
+                                $('.containerSub').append('<h1>You Won! <br> Score:' + app.score + '<\h1>');
+                                if (app.score > highscore) {
+                                    $('.containerSub').append('<br><h1>New High Score!<\h1>');
+                                }
                                 return;
                             }
                             $('.selected').removeClass('selected');
