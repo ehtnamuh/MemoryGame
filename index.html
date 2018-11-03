@@ -145,10 +145,14 @@
                 gameEndCondition: function () {
                     $('.card').css("display", "none");
                     app.score = app.score + Number(timer) * timeBonus;
-                    $('.containerSub').append('<h1>Match Finished! <br> Score:' + app.score + '<\h1>');
+                    $('.containerSub').append('<h1>Match Finished! <br> Score:' + app.score + '</h1>');
                     if (app.score > highscore) {
+                        highscore = app.score;
+                        $('#highscore').text(highscore);
                         localStorage.setItem("highscore", highscore);
-                        $('.containerSub').append('<br><h1>New High Score!<\h1>');
+                        $('.containerSub').append('<br><h1>New High Score!</h1>');
+                    } else {
+                        
                     }
                     temp = timer;
                     timer = 0;
