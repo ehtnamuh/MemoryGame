@@ -2,6 +2,7 @@
     padding: 0px;
     border: 0px;
     margin: 0px;
+    /* box-sizing: border-box; */
 }
 body {
     background: lightgreen;
@@ -19,7 +20,7 @@ body {
     height: inherit;
     padding-left: 6%;
     padding-right: 6%;
-    padding-top: 5%;
+    padding-top: 2%;
 /*
     background: black;
     opacity: 0.3;
@@ -31,12 +32,16 @@ body {
     height: 25%;
     width: 20%;
     background: rgb(78, 0, 0);
-    /* display: inline; */
     border-radius: 10px;
     box-shadow: 10px 10px 10px burlywood;
     padding: 0;
+    /* display:block; */
 }
-
+.card:hover{
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 2px solid gold;
+}
 .card p{
     font-size: 400%;
     color: azure;
