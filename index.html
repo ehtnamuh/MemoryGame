@@ -27,10 +27,12 @@
             <div class="card"></div>
             <div class="card"></div>
             <div class="card"></div>
+
             <div class="footer">
-                <h1>Timer: <span id="timer"></span></h1>
+                <h1>Timer: <span id="timer"></span> <div class="replay">Replay</div></h1>
                 <h1>Current Score: <span id="currentscore">0</span></h1>
             </div>
+            
         </div>
 
 
@@ -56,7 +58,7 @@
 
         $(document).ready(function () {
             var app = {
-                score:  0,
+                score: 0,
                 cards: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6],
                 shuffle: function () {
                     var random = 0;
@@ -87,6 +89,11 @@
                             app.checkMatch();
                         }
                     });
+                    $('.replay').on('click', function () {
+                        if (!$(this).hasClass('matched')) {
+                            location.reload();
+                        }
+                    });
                 },
                 checkMatch: function () {
                     if ($('.selected').length == 2) {
@@ -94,9 +101,9 @@
                             // remove cards from game
                             $('.selected').addClass('matched');
                             // Scoring
-                            app.score = app.score  + matchPoint;
+                            app.score = app.score + matchPoint;
                             $('#currentscore').text(app.score);
-                            if (app.score > highscore){
+                            if (app.score > highscore) {
                                 highscore = app.score;
                                 $('#highscore').text(highscore);
                                 localStorage.setItem("highscore", highscore);
