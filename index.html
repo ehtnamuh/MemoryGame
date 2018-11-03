@@ -27,6 +27,7 @@
                 <div class = "footer">
                     <h1>Timer:</h1>
                     <h1>Best Time:</h1>
+                    <!--                    <h1>Attempts Left:</h1>-->
                 </div>
             </div>
 
@@ -60,27 +61,40 @@
                     },
                     clickEventHandler: function(){
                         $('.card').on('click', function() {
-                            //$(this).html('<p>'+$(this).data('cardValue')+'</p>')
-                            $(this).animate({opacity:'0.8'},0.1);
-                            $(this).animate({opacity:'1'},1);
-                            $(this).html('<p>'+$(this).attr('data-card-value') +'</p>')
-                            $(this).addClass('selected');
-                            app.checkMatch();
+                            if(!$(this).hasClass('matched') ){
+                                //                                $(this).animate({padding:'0 5 0 0'}, 1);
+                                //                                $(this).animate({padding: '0'}, 1);
+                                $(this).html('<p>'+$(this).attr('data-card-value') +'</p>')
+                                $(this).addClass('selected');
+                                app.checkMatch();
+                            }
                         });
                     },
                     checkMatch: function(){
                         if($('.selected').length == 2){
                             if( $('.selected').last().attr('data-card-value') == $('.selected').first().attr('data-card-value')) {
                                 // remove cards from game
-                                $('.selected').animate({opacity:'0.1', height: '1%'});
-                                $('.selected').animate({opacity:'0.3', height: '25%'}); 
-                                //console.log("dfjlkkln");
+                                $('.selected').addClass('matched');
+                                $('.selected').animate({opacity:'0.1', height: '1%'},1);
+                                $('.selected').animate({opacity:'0.3', height: '25%'},100); 
+                                // Win Condition
+                                if ( $('.matched').length == app.cards.length){
+                                    console.log('You Won!');
+                                }
+                                $('.selected').removeClass('selected');
+                                return;
                             } else {
-                                // flip back cards
-
+                                setTimeout(function() {
+                                    // Remember you have to chain things in javascript
+                                    // like this, because javascript is retarded
+                                    // Otherwise JS would call this in different 
+                                    // Threads, hence the unpredictible behaviour;
+                                    $('.selected').html("").removeClass('selected');
+                                }, 1000);
                             }
-                            $('.selected').removeClass('selected');
+                            
                         }
+
                     }     
                 };
 
