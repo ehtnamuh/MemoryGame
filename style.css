@@ -81,7 +81,7 @@ body {
 
 
 
-@media (max-width:768px) and (min-width: 542px) {
+@media (max-width:900px) and (min-width: 542px) {
     .container{
         width: 720px;
         height: 720px;
