@@ -13,10 +13,10 @@ Scoring system
 3. Animated, Interactive Cards
 4. live score display
 
-![alt text](Capture333.JPG)
+![alt text](img/Capture333.JPG)
 
-![alt text](Capture213.JPG)
+![alt text](img/Capture213.JPG)
 
-![alt text](Capture2.JPG)
+![alt text](img/Capture2.JPG)
 
-![alt text](Capture3.JPG)
+![alt text](img/Capture3.png)
