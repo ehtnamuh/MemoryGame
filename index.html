@@ -50,6 +50,7 @@
         var timeBonus = 2;
         var matchPoint = 5;
         var penalizePoint = 1;
+        var timer = 60;
 
         if (localStorage.getItem("highscore")) {
             highscore = localStorage.getItem("highscore");
@@ -72,6 +73,7 @@
                         app.cards[random] = temp;
                     }
                     app.assignCardDivs();
+                    app.setTimer();
                     //console.log('Cards Shuffled: ' + app.cards);
                 },
                 assignCardDivs: function () {
@@ -115,12 +117,8 @@
                             $('.selected').animate({ opacity: '0.3', height: '25%' }, 100);
                             // Win Condition
                             if ($('.matched').length == app.cards.length) {
-                                console.log('You Won!');
-                                $('.card').css("display", "none");
-                                $('.containerSub').append('<h1>You Won! <br> Score:' + app.score + '<\h1>');
-                                if (app.score > highscore) {
-                                    $('.containerSub').append('<br><h1>New High Score!<\h1>');
-                                }
+                                // console.log('You Won!');
+                                app.gameEndCondition();
                                 return;
                             }
                             $('.selected').removeClass('selected');
@@ -138,6 +136,46 @@
                         }
                     }
                 },
+                setTimer: function () {
+                    var time = timer;
+                    display = $('#timer');
+                    app.startTimer(time, display);
+                },
+                gameEndCondition: function () {
+                    $('.card').css("display", "none");
+                    app.score = app.score + Number(timer) * timeBonus;
+                    $('.containerSub').append('<h1>Match Finished! <br> Score:' + app.score + '<\h1>');
+                    if (app.score > highscore) {
+                        localStorage.setItem("highscore", highscore);
+                        $('.containerSub').append('<br><h1>New High Score!<\h1>');
+                    }
+                    temp = timer;
+                    timer = 0;
+                    $('#timer').text("00:" + temp);
+                    return;
+                }
+                ,
+                startTimer: function (duration, display) {
+                    timer = duration;
+                    minutes = 0;
+                    seconds = 0;
+                    var clear = setInterval(function () {
+                        minutes = parseInt(timer / 60, 10)
+                        seconds = parseInt(timer % 60, 10);
+
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                        display.text(minutes + ":" + seconds);
+
+                        if (--timer < 0) {
+                            timer = 0;
+                            app.gameEndCondition();
+                            clearInterval(clear);
+                        }
+                    }, 1000);
+                }
+                ,
                 main: function () {
                     $('#highscore').text(highscore);
                     app.shuffle();
@@ -145,6 +183,7 @@
             };
             app.main();
         });
+
     </script>
 </body>
 
